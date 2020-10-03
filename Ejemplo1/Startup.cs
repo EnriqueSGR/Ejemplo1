@@ -35,24 +35,31 @@ namespace Ejemplo1
 
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                DeveloperExceptionPageOptions d = new DeveloperExceptionPageOptions()
+                {
+                    SourceCodeLineCount = 2
+                };
+
+                app.UseDeveloperExceptionPage(d);
             }
-                
+
             //DefaultFilesOptions d = new DefaultFilesOptions();
             //d.DefaultFileNames.Clear();
             //d.DefaultFileNames.Add("nodefault.html");
-
             //app.UseDefaultFiles(d);
-            //app.UseStaticFiles();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
 
             app.Run(async (context) => 
             {
-              
-                   
-                    await context.Response.WriteAsync(System.Diagnostics.Process.GetCurrentProcess().ProcessName);
+
+                throw new Exception("Cachis error fatal.");
+                await context.Response.WriteAsync(System.Diagnostics.Process.GetCurrentProcess().ProcessName);
               
             });
+
+
 
         }
     }
