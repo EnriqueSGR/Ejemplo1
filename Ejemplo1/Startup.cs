@@ -42,22 +42,24 @@ namespace Ejemplo1
 
                 app.UseDeveloperExceptionPage(d);
             }
-
-            //DefaultFilesOptions d = new DefaultFilesOptions();
-            //d.DefaultFileNames.Clear();
-            //d.DefaultFileNames.Add("nodefault.html");
-            //app.UseDefaultFiles(d);
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
-
-
-            app.Run(async (context) => 
+            else if(env.IsProduction() || env.IsStaging())
             {
+                app.UseExceptionHandler("/Error");
+            }
+        
+            //app.UseDefaultFiles();
+            //app.UseStaticFiles();
 
-                throw new Exception("Cachis error fatal.");
-                await context.Response.WriteAsync(System.Diagnostics.Process.GetCurrentProcess().ProcessName);
+           
+                app.Run(async (context) => 
+                {
+                    throw new Exception("Cachis error fatal.");
+
+                    await context.Response.WriteAsync("Entorno: " + env.EnvironmentName);
               
-            });
+                });
+          
+
 
 
 
