@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,13 +26,17 @@ namespace Ejemplo1
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //services.AddMvc();
+            services.AddMvcCore();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger <Startup> logger)
         {
 
-           
+
 
             if (env.IsDevelopment())
             {
@@ -42,23 +47,30 @@ namespace Ejemplo1
 
                 app.UseDeveloperExceptionPage(d);
             }
-            else if(env.IsProduction() || env.IsStaging())
+            else if (env.IsProduction() || env.IsStaging())
             {
                 app.UseExceptionHandler("/Error");
             }
-        
-            //app.UseDefaultFiles();
-            //app.UseStaticFiles();
 
+
+           app.UseStaticFiles();
+            app.UseRouting();
+            app.UseCors();
            
-                app.Run(async (context) => 
-                {
-                    throw new Exception("Cachis error fatal.");
 
-                    await context.Response.WriteAsync("Entorno: " + env.EnvironmentName);
-              
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
+            });
+
+            app.Run(async (context) =>
+                {
+
+
+                    await context.Response.WriteAsync("Texto");
+
                 });
-          
+
 
 
 
