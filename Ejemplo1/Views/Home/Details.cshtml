@@ -1,22 +1,13 @@
-﻿@model Ejemplo1.Models.Amigo
+﻿@model DetallesView
 
-<html>
+@{ 
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Amigos Detalles";
+}
 
-<head></head>
-<body>
+<h3>@Model.Titulo</h3>
+<h5>@Model.SubTitulo</h5>
 
-    <h3>
-       FUERTEMENTE TIPADO
-    </h3>
-
-
-   
-    <div>
-       NOMBRE:@ViewBag.Amigo.Nombre
-    </div>
-</body>
-
-
-</html>
-
-
+<div>Nombre:    @Model.amigo.Nombre</div>
+<div>Email:     @Model.amigo.Email</div>
+<div>Ciudad:    @Model.amigo.Ciudad</div>

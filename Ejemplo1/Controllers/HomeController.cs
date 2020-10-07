@@ -1,4 +1,5 @@
 ﻿using Ejemplo1.Models;
+using Ejemplo1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -36,13 +37,13 @@ namespace Ejemplo1.Controllers
 
         public ViewResult Details()
         {
-            Amigo amigo = amigoAlmacen.dameDatosAmigo(2);
-
-            ViewData["Cabecera"] = "LISTA AMIGOS";
-            ViewData["Amigo"] = amigo;
-            ViewBag.Titulo = "LISTA AMIGOS VIEWBAG";
-            ViewBag.Amigo = amigo;
-            return View(amigo);
+           
+            DetallesView detalles = new DetallesView();
+            detalles.amigo = amigoAlmacen.dameDatosAmigo(2);
+            detalles.Titulo = "LISTA AMIGOS VIEW MODELS";
+            detalles.SubTitulo = "xxx";
+            
+            return View(detalles);
         }
     }
 }
