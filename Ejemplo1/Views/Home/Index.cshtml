@@ -1,0 +1,34 @@
+﻿@model List<Ejemplo1.Models.Amigo>
+<html>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<head>
+</head>
+    <body>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Ciudad</th>
+            </tr>
+            <tr>
+                @foreach (var amigo in Model)
+                {
+                    <tr>
+                        <td>@amigo.Id</td>
+                        <td>@amigo.Nombre</td>
+                        <td>@amigo.Email</td>
+                        <td>@amigo.Ciudad</td>
+
+               
+                    </tr>
+                }
+            </tr>
+        </table>
+    </body>
+
+</html>
