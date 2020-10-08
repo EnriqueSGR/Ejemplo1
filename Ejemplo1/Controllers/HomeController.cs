@@ -35,11 +35,12 @@ namespace Ejemplo1.Controllers
             return View(modelo);
         }
 
-        public ViewResult Details()
+        [Route("Home/Details/{id?}")]
+        public ViewResult Details(int? id)
         {
            
             DetallesView detalles = new DetallesView();
-            detalles.amigo = amigoAlmacen.dameDatosAmigo(2);
+            detalles.amigo = amigoAlmacen.dameDatosAmigo(id?? 2);
             detalles.Titulo = "LISTA AMIGOS VIEW MODELS";
             detalles.SubTitulo = "xxx";
             

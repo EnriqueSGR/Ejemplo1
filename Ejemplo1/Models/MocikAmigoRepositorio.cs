@@ -14,8 +14,8 @@ namespace Ejemplo1.Models
             amigosLista = new List<Amigo>();
 
             amigosLista.Add(new Amigo() { Id = 1, Nombre = "Pedro", Ciudad = "Madrid", Email = "Pedro@mail.com" });
-            amigosLista.Add(new Amigo() { Id = 1, Nombre = "Juan", Ciudad = "Toledo", Email = "Juan@mail.com" }); 
-            amigosLista.Add(new Amigo() { Id = 1, Nombre = "Sara", Ciudad = "Cuenca", Email = "Sara@mail.com" });
+            amigosLista.Add(new Amigo() { Id = 2, Nombre = "Juan", Ciudad = "Toledo", Email = "Juan@mail.com" }); 
+            amigosLista.Add(new Amigo() { Id = 3, Nombre = "Sara", Ciudad = "Cuenca", Email = "Sara@mail.com" });
         }
 
         public Amigo dameDatosAmigo(int Id)
